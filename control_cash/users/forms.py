@@ -2,9 +2,27 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import *
 
+class LoginForm(forms.Form):
+    
+    username = forms.CharField(
+        label='Nombre de Usuario',
+        widget=forms.TextInput( attrs={'class':'form-control'})
+    )
+    password = forms.CharField(
+        label='Contraseña',
+        widget=forms.PasswordInput( attrs={'class':'form-control'} )
+    )
+
+
 class UsersRegisterForm(forms.ModelForm):
-    password = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
-    password_confirm = forms.CharField(label="Confirmar Contraseña", widget=forms.PasswordInput)
+    password = forms.CharField(
+        label="Contraseña", 
+        widget=forms.PasswordInput( attrs={'class':'form-control'} ) 
+    )
+    password_confirm = forms.CharField(
+        label="Confirmar contraseña", 
+        widget=forms.PasswordInput(attrs={'class':'form-control'})
+    )
 
     class Meta:
         model = User

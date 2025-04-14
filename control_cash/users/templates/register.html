@@ -23,7 +23,7 @@
     <div class=" d-flex justify-content-center align-items-center h-100">
     <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
         <h4 class="text-center mb-4">Registro</h4>
-        <form>
+        <form method="post">
             {% csrf_token %}
             <div class="mb-3">
                 <label for="{{ user_form.username.id_for_label }}" >Nombre de usuario</label>
@@ -53,8 +53,23 @@
                 <div class="text-danger">{{ user_form.email.errors }}</div>
                 {% endif %}
             </div>
+            <div class="mb-3">
+                <label for="{{ user_form.email.id_for_label }}" >Constraseña</label>
+                {{ user_form.password }}
+                {% if user_form.password.errors %}
+                <div class="text-danger">{{ user_form.password.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="{{ user_form.email.id_for_label }}" >Confirmar Constraseña</label>
+                {{ user_form.password_confirm }}
+                {% if user_form.password_confirm.errors %}
+                <div class="text-danger">{{ user_form.password_confirm.errors }}</div>
+                {% endif %}
+            </div>
 
             <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+            <a  href="{% url 'users_register' %}">Iniciar sesión</a>
         </form>
     </div>
     </div>

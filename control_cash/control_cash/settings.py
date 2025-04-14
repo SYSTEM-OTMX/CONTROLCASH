@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users'
+    
 ]
 
 MIDDLEWARE = [
@@ -117,7 +118,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+#agregar redireccion de url de manera manual
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#configurar correo para simulacion para recuperacion de contraseña
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
